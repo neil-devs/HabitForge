@@ -1,0 +1,22 @@
+INSERT INTO badges (slug, name, description, icon_name, condition_type, condition_value, xp_reward, rarity) VALUES
+('first-step', 'First Step', 'Complete your first habit.', 'Footprints', 'completion_count', 1, 50, 'common'),
+('on-fire', 'On Fire', 'Achieve a 7-day streak on any habit.', 'Flame', 'streak', 7, 100, 'common'),
+('unstoppable', 'Unstoppable', 'Achieve a 30-day streak on any habit.', 'Rocket', 'streak', 30, 500, 'rare'),
+('century-club', 'Century Club', 'Complete 100 habits in total.', '100', 'completion_count', 100, 500, 'rare'),
+('perfect-week', 'Perfect Week', 'Complete all active habits 7 days in a row.', 'Star', 'perfect_week', 1, 300, 'epic'),
+('early-bird', 'Early Bird', 'Complete all habits before 8 AM for 3 consecutive days.', 'Sun', 'social', 3, 150, 'rare'),
+('night-owl', 'Night Owl', 'Complete all habits after 10 PM for 3 consecutive days.', 'Moon', 'social', 3, 150, 'rare'),
+('social-butterfly', 'Social Butterfly', 'Add 5 friends.', 'Users', 'social', 5, 200, 'rare'),
+('challenger', 'Challenger', 'Complete a 30-day challenge.', 'Trophy', 'challenge', 1, 300, 'epic'),
+('polyhabit', 'Polyhabit', 'Create 10 different active habits.', 'Layers', 'habit_count', 10, 200, 'rare'),
+('level-5', 'Apprentice', 'Reach Level 5.', 'Award', 'level', 5, 100, 'common'),
+('level-10', 'Practitioner', 'Reach Level 10.', 'Award', 'level', 10, 200, 'rare'),
+('level-20', 'Adept', 'Reach Level 20.', 'Award', 'level', 20, 500, 'epic'),
+('level-50', 'Legend', 'Reach Level 50.', 'Crown', 'level', 50, 2000, 'legendary'),
+('mindful-master', 'Mindful Master', 'Complete 50 mindfulness habits.', 'Brain', 'completion_count', 50, 250, 'rare'),
+('fitness-freak', 'Fitness Freak', 'Complete 50 fitness habits.', 'Dumbbell', 'completion_count', 50, 250, 'rare'),
+('bookworm', 'Bookworm', 'Complete 50 learning habits.', 'Book', 'completion_count', 50, 250, 'rare'),
+('hydrated', 'Hydrated', 'Complete a water drinking habit 30 times.', 'Droplet', 'completion_count', 30, 150, 'common'),
+('early-adopter', 'Early Adopter', 'Join HabitForge during its first year.', 'Zap', 'social', 1, 100, 'legendary'),
+('iron-will', 'Iron Will', 'Achieve a 100-day streak on any habit.', 'Shield', 'streak', 100, 2000, 'legendary')
+ON CONFLICT (slug) DO NOTHING;

@@ -1,0 +1,16 @@
+// Hardcoded auth configuration as per project requirements
+const JWT_SECRET = 'HabitForge$ecr3t!2026#XP_ENGINE_V1_ULTRA_SECURE_KEY_DO_NOT_SHARE';
+const JWT_REFRESH_SECRET = 'HabitForge_R3fresh$ecr3t!2026#REFRESH_POOL_SECURE';
+const JWT_EXPIRES_IN = '15m';
+const JWT_REFRESH_EXPIRES_IN = '7d';
+const BCRYPT_ROUNDS = 12;
+const RESET_TOKEN_EXPIRY_MINUTES = 15;
+
+module.exports = {
+  JWT_SECRET,
+  JWT_REFRESH_SECRET,
+  JWT_EXPIRES_IN,
+  JWT_REFRESH_EXPIRES_IN,
+  BCRYPT_ROUNDS,
+  RESET_TOKEN_EXPIRY_MINUTES,
+};

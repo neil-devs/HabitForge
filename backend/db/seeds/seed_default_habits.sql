@@ -1,0 +1,22 @@
+INSERT INTO habit_templates (name, description, emoji, color, category, frequency_type, goal_days) VALUES
+('Drink Water', 'Drink at least 8 glasses of water today.', '💧', '#0ea5e9', 'health', 'daily', 30),
+('Read a Book', 'Read for at least 20 minutes.', '📚', '#8b5cf6', 'learning', 'daily', 30),
+('Exercise', 'Workout for 30 minutes.', '🏋️', '#ef4444', 'fitness', 'daily', 30),
+('Meditate', 'Meditate for 10 minutes.', '🧘', '#10b981', 'mindfulness', 'daily', 30),
+('Eat Vegetables', 'Include veggies in your meals.', '🥦', '#84cc16', 'nutrition', 'daily', 30),
+('Sleep 8 Hours', 'Get a full night of rest.', '🛌', '#6366f1', 'health', 'daily', 30),
+('Journal', 'Write down your thoughts for the day.', '📓', '#f59e0b', 'mindfulness', 'daily', 30),
+('No Sugar', 'Avoid added sugars today.', '🚫', '#ec4899', 'nutrition', 'daily', 30),
+('Code', 'Write code for at least 1 hour.', '💻', '#3b82f6', 'learning', 'daily', 30),
+('Walk 10k Steps', 'Reach your daily step goal.', '🚶', '#14b8a6', 'fitness', 'daily', 30),
+('Call a Friend', 'Check in on someone you care about.', '📞', '#ec4899', 'social', 'custom', 30),
+('Save Money', 'Put something into savings today.', '💰', '#eab308', 'finance', 'daily', 30),
+('Learn a Language', 'Practice a new language for 15 mins.', '🌍', '#a855f7', 'learning', 'daily', 30),
+('Stretching', 'Stretch for 10 minutes.', '🤸', '#f97316', 'fitness', 'daily', 30),
+('Gratitude', 'Write down 3 things you are grateful for.', '🙏', '#f43f5e', 'mindfulness', 'daily', 30),
+('No Social Media', 'Stay off social media apps.', '📵', '#64748b', 'productivity', 'daily', 30),
+('Inbox Zero', 'Clear out your email inbox.', '✉️', '#06b6d4', 'productivity', 'weekdays', 30),
+('Plan Tomorrow', 'Write down your top 3 tasks for tomorrow.', '📝', '#f59e0b', 'productivity', 'daily', 30),
+('Take Vitamins', 'Take your daily supplements.', '💊', '#ef4444', 'health', 'daily', 30),
+('Read News', 'Stay informed with current events.', '📰', '#8b5cf6', 'learning', 'daily', 30)
+ON CONFLICT DO NOTHING;

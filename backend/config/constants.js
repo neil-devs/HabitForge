@@ -1,0 +1,16 @@
+// Gamification constants
+const XP = {
+  HABIT_COMPLETION_BASE: 10,
+  PERFECT_DAY_BONUS: 50,
+  STREAK_7_DAY: 100,
+  STREAK_30_DAY: 500,
+  STREAK_100_DAY: 2000,
+  CHALLENGE_COMPLETION: 300,
+  FIRST_HABIT: 20,
+  REFERRAL: 100,
+  DAILY_LOGIN: 5,
+};
+
+module.exports = {
+  XP,
+};
