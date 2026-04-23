@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150" alt="HabitForge Pro Logo" width="120" />
+  <img src=".\frontend\public\favicon.svg" alt="HabitForge Pro Logo" width="120" />
   <h1>HabitForge Pro 🚀</h1>
   <p><em>"Turn Your Life Into An RPG"</em></p>
   
