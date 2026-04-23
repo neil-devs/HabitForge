@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useMotionTemplate, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Trophy, BarChart3, Target, Zap, Shield, Star, Users, Flame, Skull, Check, XCircle, Crown, Swords, Activity, Sparkles, TrendingUp } from 'lucide-react';
+import { ArrowRight, Trophy, BarChart3, Target, Zap, Shield, Star, Users, Flame, Skull, Check, XCircle, Crown, Swords, Activity, Sparkles, TrendingUp, Github, Twitter, Linkedin, Heart } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 
 // --- Ultra Interactive Spotlight Card Component ---
@@ -456,35 +456,92 @@ const LandingPage = () => {
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border-subtle py-16 bg-bg-secondary">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
-            <div className="relative flex items-center justify-center w-10 h-10">
-              <svg viewBox="0 0 40 40" className="w-full h-full">
-                <defs>
-                  <linearGradient id="landing-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#f59e0b" />
-                    <stop offset="100%" stopColor="#f43f5e" />
-                  </linearGradient>
-                </defs>
-                <path d="M20 2 L36 10 L36 30 L20 38 L4 30 L4 10 Z" fill="url(#landing-logo-footer)" opacity="0.15"/>
-                <path d="M20 2 L36 10 L36 30 L20 38 L4 30 L4 10 Z" fill="none" stroke="url(#landing-logo-footer)" strokeWidth="1.5"/>
-                <path d="M20 18 L20 38" stroke="url(#landing-logo-footer)" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M4 10 L20 18 L36 10" stroke="url(#landing-logo-footer)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <polygon points="20,10 24,18 20,26 16,18" fill="#ffffff" className="origin-center animate-[spin_4s_linear_infinite]" />
-              </svg>
+      {/* Upgraded Footer */}
+      <footer className="border-t border-border-subtle bg-bg-secondary pt-24 pb-12 relative overflow-hidden">
+        {/* Subtle Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-accent-amber/50 to-transparent" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-accent-amber/5 blur-[100px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-6 max-w-6xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+            
+            {/* Brand Column */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="relative flex items-center justify-center w-10 h-10">
+                  <svg viewBox="0 0 40 40" className="w-full h-full drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]">
+                    <defs>
+                      <linearGradient id="landing-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#f59e0b" />
+                        <stop offset="100%" stopColor="#f43f5e" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M20 2 L36 10 L36 30 L20 38 L4 30 L4 10 Z" fill="url(#landing-logo-footer)" opacity="0.15"/>
+                    <path d="M20 2 L36 10 L36 30 L20 38 L4 30 L4 10 Z" fill="none" stroke="url(#landing-logo-footer)" strokeWidth="1.5"/>
+                    <path d="M20 18 L20 38" stroke="url(#landing-logo-footer)" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M4 10 L20 18 L36 10" stroke="url(#landing-logo-footer)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <polygon points="20,10 24,18 20,26 16,18" fill="#ffffff" className="origin-center animate-[spin_4s_linear_infinite]" />
+                  </svg>
+                </div>
+                <span className="font-black text-2xl tracking-tight text-white">HabitForge Pro</span>
+              </div>
+              <p className="text-text-secondary text-lg mb-8 max-w-sm leading-relaxed">
+                Turn your life into the ultimate RPG. Build streaks, conquer quests, and level up your reality with a community of high achievers.
+              </p>
+              <div className="flex items-center gap-4">
+                <a href="#" className="w-10 h-10 rounded-full bg-bg-tertiary border border-border-subtle flex items-center justify-center text-text-muted hover:text-accent-amber hover:border-accent-amber/50 transition-all hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                  <Twitter size={18} />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-bg-tertiary border border-border-subtle flex items-center justify-center text-text-muted hover:text-accent-rose hover:border-accent-rose/50 transition-all hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+                  <Github size={18} />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-bg-tertiary border border-border-subtle flex items-center justify-center text-text-muted hover:text-accent-emerald hover:border-accent-emerald/50 transition-all hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                  <Linkedin size={18} />
+                </a>
+              </div>
             </div>
-            <span className="font-bold text-lg tracking-tight">HabitForge Pro</span>
+
+            {/* Links Columns */}
+            <div>
+              <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Product</h4>
+              <ul className="space-y-4">
+                <li><Link to="/features" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Features</Link></li>
+                <li><Link to="/pricing" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Pricing</Link></li>
+                <li><Link to="/changelog" className="text-text-muted hover:text-accent-amber transition-colors font-medium flex items-center gap-2">Changelog <span className="bg-accent-emerald/20 text-accent-emerald text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full">New</span></Link></li>
+                <li><Link to="/integrations" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Integrations</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Resources</h4>
+              <ul className="space-y-4">
+                <li><Link to="/community" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Community Discord</Link></li>
+                <li><Link to="/blog" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Blog</Link></li>
+                <li><Link to="/guides" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Habit Guides</Link></li>
+                <li><Link to="/help" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Help Center</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Legal</h4>
+              <ul className="space-y-4">
+                <li><Link to="/privacy" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Terms of Service</Link></li>
+                <li><Link to="/cookies" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Cookie Policy</Link></li>
+                <li><Link to="/contact" className="text-text-muted hover:text-accent-amber transition-colors font-medium block">Contact Us</Link></li>
+              </ul>
+            </div>
+            
           </div>
-          <div className="flex gap-8 text-base font-bold text-text-muted">
-            <Link to="/features" className="hover:text-white transition-colors">Features</Link>
-            <Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-            <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-          </div>
-          <div className="text-sm font-medium text-text-muted">
-            © {new Date().getFullYear()} HabitForge Pro. All rights reserved.
+
+          <div className="pt-8 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-text-muted font-medium flex items-center gap-1">
+              &copy; {new Date().getFullYear()} HabitForge Pro. Crafted with <Heart size={14} className="text-accent-rose inline" fill="currentColor" /> for high achievers.
+            </div>
+            <div className="flex items-center gap-2 text-sm font-bold text-text-muted">
+              <span className="w-2 h-2 rounded-full bg-accent-emerald animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+              All Systems Operational
+            </div>
           </div>
         </div>
       </footer>

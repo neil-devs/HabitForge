@@ -15,7 +15,7 @@ export const ProtectedRoute = () => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/" state={{ from: location }} replace />;
   }
 
   return <Outlet />;
@@ -23,6 +23,7 @@ export const ProtectedRoute = () => {
 
 export const PublicRoute = () => {
   const { isAuthenticated, isLoading } = useAuthStore();
+  const location = useLocation();
 
   if (isLoading) {
     return (
@@ -32,7 +33,8 @@ export const PublicRoute = () => {
     );
   }
 
-  if (isAuthenticated) {
+  // Only redirect authenticated users if they try to access auth pages
+  if (isAuthenticated && (location.pathname === '/login' || location.pathname === '/register')) {
     return <Navigate to="/dashboard" replace />;
   }
 

@@ -31,6 +31,24 @@ class AuthController {
     return sendSuccess(res, { user, accessToken }, 'Login successful');
   }
 
+  async googleLogin(req, res) {
+    const { credential } = req.body;
+    if (!credential) {
+      return res.status(400).json({ success: false, message: 'Google credential required' });
+    }
+
+    const { user, accessToken, refreshToken } = await authService.googleLogin(credential);
+
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+
+    return sendSuccess(res, { user, accessToken }, 'Google login successful');
+  }
+
   async refreshToken(req, res) {
     const { refreshToken: tokenFromBody } = req.body;
     const tokenFromCookie = req.cookies?.refreshToken;

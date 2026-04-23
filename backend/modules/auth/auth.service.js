@@ -2,6 +2,9 @@ const bcrypt = require('bcryptjs');
 const db = require('../../config/database');
 const { BCRYPT_ROUNDS } = require('../../config/auth');
 const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = require('../../utils/tokenHelpers');
+const { OAuth2Client } = require('google-auth-library');
+
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 class AuthService {
   async register(email, username, password) {
@@ -73,6 +76,57 @@ class AuthService {
     const newRefreshToken = generateRefreshToken(user);
 
     return { accessToken, refreshToken: newRefreshToken };
+  }
+
+  async googleLogin(credential) {
+    if (!process.env.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID.includes('your_google_client_id')) {
+      const error = new Error('Google Authentication is not fully configured on the server yet.');
+      error.statusCode = 500;
+      throw error;
+    }
+
+    const ticket = await googleClient.verifyIdToken({
+      idToken: credential,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    
+    const payload = ticket.getPayload();
+    const { sub: googleId, email, name, picture } = payload;
+
+    // Check if user exists by email
+    let result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+    let user;
+
+    if (result.rows.length > 0) {
+      user = result.rows[0];
+      // Link google_id if not linked
+      if (!user.google_id) {
+        await db.query('UPDATE users SET google_id = $1, auth_provider = $2 WHERE id = $3', [googleId, 'google', user.id]);
+        user.google_id = googleId;
+        user.auth_provider = 'google';
+      }
+    } else {
+      // Create new user
+      let username = email.split('@')[0];
+      const checkUsername = await db.query('SELECT id FROM users WHERE username = $1', [username]);
+      if (checkUsername.rows.length > 0) {
+        username = `${username}${Math.floor(Math.random() * 10000)}`;
+      }
+
+      const insertResult = await db.query(
+        'INSERT INTO users (email, username, display_name, avatar_url, google_id, auth_provider) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+        [email, username, name, picture, googleId, 'google']
+      );
+      user = insertResult.rows[0];
+    }
+
+    await db.query('UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = $1', [user.id]);
+
+    const accessToken = generateAccessToken(user);
+    const refreshToken = generateRefreshToken(user);
+
+    delete user.password_hash;
+    return { user, accessToken, refreshToken };
   }
 }
 

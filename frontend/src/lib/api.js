@@ -35,7 +35,9 @@ api.interceptors.response.use(
         }
       } catch (refreshError) {
         removeToken();
-        window.location.href = '/login';
+        if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
+          window.location.href = '/login';
+        }
         return Promise.reject(refreshError);
       }
     }

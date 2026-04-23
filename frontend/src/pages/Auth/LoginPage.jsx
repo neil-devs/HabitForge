@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 import { useAuthStore } from '../../store/authStore';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
@@ -8,7 +9,7 @@ import { Card } from '../../components/ui/Card';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, isLoading, error } = useAuthStore();
+  const { login, loginWithGoogle, isLoading, error } = useAuthStore();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,6 +18,17 @@ const LoginPage = () => {
     if (result.success) {
       navigate('/dashboard');
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    const result = await loginWithGoogle(credentialResponse.credential);
+    if (result.success) {
+      navigate('/dashboard');
+    }
+  };
+
+  const handleGoogleError = () => {
+    useAuthStore.setState({ error: 'Google login was unsuccessful. Please try again.' });
   };
 
   return (
@@ -56,6 +68,27 @@ const LoginPage = () => {
             Sign In
           </Button>
         </form>
+
+        <div className="mt-6">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border-subtle"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-bg-secondary/80 text-text-muted">Or continue with</span>
+            </div>
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+              theme="filled_black"
+              shape="pill"
+              size="large"
+            />
+          </div>
+        </div>
 
         <p className="text-center text-sm text-text-muted mt-6">
           Don't have an account? <Link to="/register" className="text-accent-amber hover:underline font-medium">Create one</Link>
