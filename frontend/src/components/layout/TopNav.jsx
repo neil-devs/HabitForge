@@ -116,15 +116,34 @@ const TopNav = () => {
 
         {/* Right Actions */}
         <div className="flex items-center gap-2 shrink-0">
-          <button
-            className="group tour-notifications p-2 rounded-full text-text-secondary hover:bg-bg-tertiary hover:text-text-primary transition-all relative"
+          <Dropdown
+            trigger={
+              <button
+                className="group tour-notifications p-2 rounded-full text-text-secondary hover:bg-bg-tertiary hover:text-text-primary transition-all relative outline-none ring-2 ring-transparent hover:ring-bg-tertiary focus:ring-accent-rose/50"
+              >
+                <Bell size={20} />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-accent-rose rounded-full animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span>
+              </button>
+            }
           >
-            <Bell size={20} />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-accent-rose rounded-full"></span>
-            <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1.5 bg-bg-secondary border border-border-subtle text-text-primary text-xs font-bold rounded-lg opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none whitespace-nowrap z-50 shadow-xl">
-              Notifications
-            </span>
-          </button>
+            <div className="px-3 py-2 text-xs font-bold text-text-muted uppercase tracking-wider mb-1">
+              Recent Notifications
+            </div>
+            <DropdownSeparator />
+            <DropdownItem>
+              <div className="flex flex-col gap-1 w-full max-w-[250px] overflow-hidden">
+                <span className="font-bold text-sm text-text-primary truncate">Welcome to HabitForge Pro!</span>
+                <span className="text-xs text-text-muted line-clamp-2 leading-relaxed">Start by adding your first habit and earning your first chunk of XP.</span>
+              </div>
+            </DropdownItem>
+            <DropdownSeparator />
+            <DropdownItem>
+              <div className="flex flex-col gap-1 w-full max-w-[250px] overflow-hidden">
+                <span className="font-bold text-sm text-text-primary truncate flex items-center gap-2"><Flame size={14} className="text-accent-amber" /> 3-Day Streak!</span>
+                <span className="text-xs text-text-muted line-clamp-2 leading-relaxed">You're on fire! Keep it up to earn the Warrior badge.</span>
+              </div>
+            </DropdownItem>
+          </Dropdown>
           <Dropdown
             trigger={
               <button
